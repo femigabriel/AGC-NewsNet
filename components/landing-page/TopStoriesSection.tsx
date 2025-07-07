@@ -96,8 +96,9 @@ export default function TopStoriesSection() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent text-white p-4">
-                  <p className="text-xs uppercase mb-1">
-                    {mainStory.category.category_name}
+                  <p className="text-sm font-bold text-[#F85FD0] uppercase mb-1">
+                    {/* {mainStory.category.category_name} */}
+                    LATEST TODAY
                   </p>
                   <h3 className="text-lg md:text-xl font-semibold leading-tight line-clamp-2">
                     {mainStory.title}
@@ -119,8 +120,9 @@ export default function TopStoriesSection() {
                     className="w-full h-24 object-cover md:h-40"
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
-                    <p className="text-xs text-red-600 uppercase mb-1">
-                      {secondStory.category.category_name}
+                    <p className="text-xs font-bold text-[#F85FD0] mb-1">
+                      {/* {secondStory.category.category_name} */}
+                      NEWS TODAY
                     </p>
                     <p className="text-xs font-medium line-clamp-3">
                       {secondStory.title}
@@ -138,8 +140,9 @@ export default function TopStoriesSection() {
                     className="w-full h-24 object-cover md:h-40"
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
-                    <p className="text-xs text-red-600 uppercase mb-1">
-                      {secondStory.category.category_name}
+                    <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
+                      {/* {secondStory.category.category_name} */}
+                      NEWS TODAY
                     </p>
                     <p className="text-xs font-medium line-clamp-3">
                       {secondStory.title}
@@ -158,9 +161,9 @@ export default function TopStoriesSection() {
                   className="w-full h-24 object-cover md:h-40"
                 />
                 <div className="p-2 flex-1 flex flex-col justify-between">
-                  <p className="text-xs text-red-600 uppercase mb-1">
-                    {thirdStory.category.category_name}
-                  </p>
+                <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
+                      NEWS TODAY
+                    </p>
                   <p className="text-xs font-medium line-clamp-3">
                     {thirdStory.title}
                   </p>
