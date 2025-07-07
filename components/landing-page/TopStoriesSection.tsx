@@ -10,36 +10,51 @@ import { Story } from "@/types/topStories";
 export default function TopStoriesSection() {
   const { data, isLoading, isError, error } = useTopStories();
 
-  // Extract stories from API response
   const stories = data?.data.data || [];
 
-  // Fallback content for when fewer than 3 stories are available
   const mainStory: Story = stories[0]?.story || {
     id: 0,
     title: "Loading...",
-    category: { category_name: "Latest Today", category_id: 0, created_at: "", updated_at: "", total_stories: null },
+    category: {
+      category_name: "Latest Today",
+      category_id: 0,
+      created_at: "",
+      updated_at: "",
+      total_stories: null,
+    },
     banner_image: "/images/Rectangle 39 (1).svg",
   };
   const secondStory: Story = stories[1]?.story || {
     id: 0,
     title: "Loading...",
-    category: { category_name: "Loading", category_id: 0, created_at: "", updated_at: "", total_stories: null },
+    category: {
+      category_name: "Loading",
+      category_id: 0,
+      created_at: "",
+      updated_at: "",
+      total_stories: null,
+    },
     banner_image: "/images/Rectangle 39.svg",
   };
   const thirdStory: Story = stories[2]?.story || {
     id: 0,
     title: "Loading...",
-    category: { category_name: "Loading", category_id: 0, created_at: "", updated_at: "", total_stories: null },
+    category: {
+      category_name: "Loading",
+      category_id: 0,
+      created_at: "",
+      updated_at: "",
+      total_stories: null,
+    },
     banner_image: "/images/Rectangle 39.svg",
   };
 
   return (
     <section className="container mx-auto px-4 py-8">
-        <h2 className="text-xl font-bold mb-4 pl-4 border-l-4 border-[#813D97]">
+      <h2 className="text-xl font-bold mb-4 pl-4 border-l-4 border-[#813D97]">
+        TOP STORIES
+      </h2>
 
-        TOP STORIES</h2>
-
-      {/* Loading State */}
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
           <div className="md:col-span-2">
@@ -61,17 +76,15 @@ export default function TopStoriesSection() {
         </div>
       )}
 
-      {/* Error State */}
       {isError && (
         <div className="text-center text-red-600">
-          Error loading top stories: {error instanceof Error ? error.message : "Unknown error"}
+          Error loading top stories:{" "}
+          {error instanceof Error ? error.message : "Unknown error"}
         </div>
       )}
 
-      {/* Content */}
       {!isLoading && !isError && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Main Story (left, 2/3 width on desktop) */}
           <div className="md:col-span-2">
             <Link href={`/stories/${mainStory.id}`} className="block">
               <div className="relative rounded overflow-hidden h-[400px] md:h-[480px]">
@@ -83,7 +96,9 @@ export default function TopStoriesSection() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent text-white p-4">
-                  <p className="text-xs uppercase mb-1">{mainStory.category.category_name}</p>
+                  <p className="text-xs uppercase mb-1">
+                    {mainStory.category.category_name}
+                  </p>
                   <h3 className="text-lg md:text-xl font-semibold leading-tight line-clamp-2">
                     {mainStory.title}
                   </h3>
@@ -92,11 +107,8 @@ export default function TopStoriesSection() {
             </Link>
           </div>
 
-          {/* Smaller Stories (right, 1/3 width on desktop) */}
           <div className="md:col-span-1 flex flex-col gap-4 h-[400px] md:h-[480px]">
-            {/* Top two stories, side by side, showing the same story */}
             <div className="grid grid-cols-2 gap-4 h-1/2">
-              {/* Story 1 (second story, duplicated) */}
               <Link href={`/stories/${secondStory.id}`} className="block">
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
@@ -110,11 +122,12 @@ export default function TopStoriesSection() {
                     <p className="text-xs text-red-600 uppercase mb-1">
                       {secondStory.category.category_name}
                     </p>
-                    <p className="text-xs font-medium line-clamp-3">{secondStory.title}</p>
+                    <p className="text-xs font-medium line-clamp-3">
+                      {secondStory.title}
+                    </p>
                   </div>
                 </div>
               </Link>
-              {/* Story 2 (second story, duplicated) */}
               <Link href={`/stories/${secondStory.id}`} className="block">
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
@@ -128,12 +141,13 @@ export default function TopStoriesSection() {
                     <p className="text-xs text-red-600 uppercase mb-1">
                       {secondStory.category.category_name}
                     </p>
-                    <p className="text-xs font-medium line-clamp-3">{secondStory.title}</p>
+                    <p className="text-xs font-medium line-clamp-3">
+                      {secondStory.title}
+                    </p>
                   </div>
                 </div>
               </Link>
             </div>
-            {/* Bottom story, full width (third story) */}
             <Link href={`/stories/${thirdStory.id}`} className="block h-1/2">
               <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                 <Image
@@ -147,7 +161,9 @@ export default function TopStoriesSection() {
                   <p className="text-xs text-red-600 uppercase mb-1">
                     {thirdStory.category.category_name}
                   </p>
-                  <p className="text-xs font-medium line-clamp-3">{thirdStory.title}</p>
+                  <p className="text-xs font-medium line-clamp-3">
+                    {thirdStory.title}
+                  </p>
                 </div>
               </div>
             </Link>

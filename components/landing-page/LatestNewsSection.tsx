@@ -1,4 +1,3 @@
-// components/landing-page/LatestNewsSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -10,10 +9,8 @@ import { Story } from "@/types/topStories";
 export default function LatestNewsSection() {
   const { data, isLoading, isError, error } = useLatestStories();
 
-  // Extract stories from API response
   const stories = data?.data.data || [];
 
-  // Fallback content for when no stories are available
   const fallbackStory: Story = {
     id: 0,
     title: "Loading...",
@@ -41,7 +38,9 @@ export default function LatestNewsSection() {
 
   return (
     <section className="container mx-auto px-4 py-8">
-      <h2 className="text-xl font-bold mb-4 pl-4 border-l-4 border-red-600">LATEST NEWS</h2>
+      <h2 className="text-xl font-bold mb-4 pl-4 border-l-4 border-[#813D97]">
+        LATEST NEWS
+      </h2>
 
       {/* Loading State */}
       {isLoading && (
@@ -62,14 +61,13 @@ export default function LatestNewsSection() {
         </div>
       )}
 
-      {/* Error State */}
       {isError && (
         <div className="text-center text-red-600">
-          Error loading latest stories: {error instanceof Error ? error.message : "Unknown error"}
+          Error loading latest stories:{" "}
+          {error instanceof Error ? error.message : "Unknown error"}
         </div>
       )}
 
-      {/* Content */}
       {!isLoading && !isError && (
         <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scrollbar">
           {stories.length > 0
@@ -87,8 +85,12 @@ export default function LatestNewsSection() {
                       className="object-cover"
                     />
                     <div className="absolute bottom-0 w-full bg-gradient-to-t from-gray-800 to-transparent p-4">
-                      <p className="text-xs text-white uppercase mb-2">{story.category.category_name}</p>
-                      <h3 className="text-sm font-medium text-white line-clamp-3">{story.title}</h3>
+                      <p className="text-xs text-white uppercase mb-2">
+                        {story.category.category_name}
+                      </p>
+                      <h3 className="text-sm font-medium text-white line-clamp-3">
+                        {story.title}
+                      </h3>
                     </div>
                   </div>
                 </Link>
@@ -108,8 +110,12 @@ export default function LatestNewsSection() {
                         className="object-cover"
                       />
                       <div className="absolute bottom-0 w-full bg-gradient-to-t from-gray-800 to-transparent p-4">
-                        <p className="text-xs text-white uppercase mb-2">{story.category.category_name}</p>
-                        <h3 className="text-sm font-medium text-white line-clamp-3">{story.title}</h3>
+                        <p className="text-xs text-white uppercase mb-2">
+                          {story.category.category_name}
+                        </p>
+                        <h3 className="text-sm font-medium text-white line-clamp-3">
+                          {story.title}
+                        </h3>
                       </div>
                     </div>
                   </div>

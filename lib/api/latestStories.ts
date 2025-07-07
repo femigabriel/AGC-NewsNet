@@ -1,4 +1,3 @@
-// lib/api/latestStories.ts
 import { useQuery } from "@tanstack/react-query";
 import { LatestStoriesResponse } from "@/types/topStories";
 

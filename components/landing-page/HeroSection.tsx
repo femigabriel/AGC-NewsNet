@@ -1,10 +1,9 @@
-// components/HeroSection.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Search } from "lucide-react"; // Removed unused Lucide icons
+import { Search } from "lucide-react"; 
 import { usePathname } from "next/navigation";
 
 export default function HeroSection() {
@@ -107,7 +106,6 @@ export default function HeroSection() {
 
   return (
     <div className="bg-[#1B1B1B]">
-      {/* Top Links */}
       <div className="bg-[#D32C89] text-white text-sm px-4 py-2 flex justify-between items-center h-[43px]">
         <div className="space-x-4 hidden md:block">
           <Link href="/about" className="hover:underline">
@@ -144,7 +142,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Advertisement Banner */}
       <div className="pt-6">
         <div className="container mx-auto px-4 py-3">
           <Image
@@ -158,7 +155,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Nav Menu */}
       <div className="shadow-md mt-10 text-white tracking-wide ">
         <nav className="flex flex-wrap items-center justify-between px-4 py-3 text-sm font-semibold container mx-auto">
           <div className="flex items-center gap-6">
