@@ -54,7 +54,6 @@ export default function HeroSection() {
 
   return (
     <div className="bg-[#1B1B1B] text-white">
-      {/* Top Bar */}
       <div className="bg-[#D32C89] text-sm px-4 py-2 flex justify-between items-center h-[43px]">
         <div className="space-x-4 hidden md:block">
           <Link href="/about" className="hover:underline nav-hover px-2 py-1 rounded">
@@ -98,7 +97,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ad Banner */}
       <div className="pt-6 hidden md:block">
         <div className="container mx-auto px-4 py-3">
           <Image
@@ -201,10 +199,10 @@ export default function HeroSection() {
           <div className="md:hidden relative">
             <button
               onClick={handleAvatarClick}
-              className="flex items-center gap-1 text-white hover:text-[#D32C89] transition-colors duration-200"
+              className="flex items-center gap-1 text-black hover:text-[#FFFFFF] transition-colors duration-200"
             >
               <Avatar
-                sx={{ width: 28, height: 28, bgcolor: "#D32C89", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" }}
+                sx={{ width: 28, height: 28, bgcolor: "#FFFFFF", color:'black', boxShadow: "0 2px 4px rgba(0,0,0,0.2)" }}
                 alt="User"
               />
               <ChevronDown className="w-4 h-4" />
