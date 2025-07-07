@@ -91,8 +91,9 @@ export default function TopStoriesSection() {
                 />
                 <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent text-white p-4">
                   <p className="text-sm font-bold text-[#F85FD0] uppercase mb-1">
-                    {mainStory.category.category_name}
+                    LATEST TODAY
                   </p>
+
                   <h3 className="text-lg md:text-xl font-semibold leading-tight line-clamp-2">
                     {mainStory.title}
                   </h3>
@@ -106,7 +107,10 @@ export default function TopStoriesSection() {
             {/* Twins */}
             <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:h-1/2">
               {/* Twin 1 */}
-              <Link href={`/stories/${secondStory.id}`} className="block h-full">
+              <Link
+                href={`/stories/${secondStory.id}`}
+                className="block h-full"
+              >
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
                     src={secondStory.banner_image || "/images/Rectangle 39.svg"}
@@ -117,8 +121,9 @@ export default function TopStoriesSection() {
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
                     <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
-                      {secondStory.category.category_name}
+                      NEWS TODAY
                     </p>
+
                     <p className="text-xs font-medium line-clamp-3">
                       {secondStory.title}
                     </p>
@@ -127,7 +132,10 @@ export default function TopStoriesSection() {
               </Link>
 
               {/* Twin 2 (reused same story for demo, you can change) */}
-              <Link href={`/stories/${secondStory.id}`} className="block h-full">
+              <Link
+                href={`/stories/${secondStory.id}`}
+                className="block h-full"
+              >
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
                     src={secondStory.banner_image || "/images/Rectangle 39.svg"}
@@ -138,8 +146,9 @@ export default function TopStoriesSection() {
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
                     <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
-                      {secondStory.category.category_name}
+                      NEWS TODAY
                     </p>
+
                     <p className="text-xs font-medium line-clamp-3">
                       {secondStory.title}
                     </p>
@@ -160,8 +169,9 @@ export default function TopStoriesSection() {
                 />
                 <div className="p-2 flex-1 flex flex-col justify-between">
                   <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
-                    {thirdStory.category.category_name}
+                    NEWS TODAY
                   </p>
+
                   <p className="text-xs font-medium line-clamp-3">
                     {thirdStory.title}
                   </p>
