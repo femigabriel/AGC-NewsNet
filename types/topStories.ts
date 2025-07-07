@@ -37,3 +37,26 @@ export interface Story {
       data: TopStory[];
     };
   }
+  
+  export interface LatestStoriesResponse {
+    message: string;
+    data: {
+      data: Story[];
+      links: {
+        first: string;
+        last: string;
+        prev: string | null;
+        next: string | null;
+      };
+      meta: {
+        current_page: number;
+        from: number;
+        last_page: number;
+        links: Array<{ url: string | null; label: string; active: boolean }>;
+        path: string;
+        per_page: number;
+        to: number;
+        total: number;
+      };
+    };
+  }

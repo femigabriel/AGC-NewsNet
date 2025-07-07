@@ -35,7 +35,9 @@ export default function TopStoriesSection() {
 
   return (
     <section className="container mx-auto px-4 py-8">
-      <h2 className="text-xl font-bold mb-4">TOP STORIES</h2>
+        <h2 className="text-xl font-bold mb-4 pl-4 border-l-4 border-[#813D97]">
+
+        TOP STORIES</h2>
 
       {/* Loading State */}
       {isLoading && (
