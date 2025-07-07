@@ -1,4 +1,3 @@
-// components/landing-page/HeroSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -7,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Search, Menu as MenuIcon, ChevronDown, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Drawer, DrawerContent, DrawerTrigger, DrawerClose } from "@/components/ui/drawer";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // For accessibility
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; 
 import { Avatar, DialogTitle, Menu, MenuItem } from "@mui/material";
 
 export default function HeroSection() {
@@ -99,7 +98,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Ad Banner (Hidden on Mobile) */}
+      {/* Ad Banner */}
       <div className="pt-6 hidden md:block">
         <div className="container mx-auto px-4 py-3">
           <Image
@@ -113,12 +112,10 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Navigation */}
       <div className="shadow-md mt-10">
         <nav className="flex items-center justify-between px-4 py-3 text-sm font-semibold container mx-auto">
           {/* Mobile Layout */}
           <div className="flex items-center gap-4 md:hidden">
-            {/* Menu Icon (Drawer Trigger) */}
             <Drawer direction="left" open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
               <DrawerTrigger asChild>
                 <button className="text-white hover:text-[#D32C89] transition-colors duration-200">
@@ -200,7 +197,7 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* User Avatar with Dropdown (Mobile) */}
+          {/* Dropdown (Mobile) */}
           <div className="md:hidden relative">
             <button
               onClick={handleAvatarClick}
