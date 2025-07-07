@@ -1,4 +1,3 @@
-// components/landing-page/TopStoriesSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -10,23 +9,23 @@ import { Story } from "@/types/topStories";
 export default function TopStoriesSection() {
   const { data, isLoading, isError, error } = useTopStories();
 
-  // Extract stories from API response
   const stories = data?.data.data || [];
 
-  // Fallback content for when no stories are available
-  const fallbackStory: Story = {
+  const mainStory: Story = stories[0]?.story || {
     id: 0,
     title: "Loading...",
-    subtitle: "Loading...",
-    description: "Loading...",
-    status: "published",
-    type: "article",
-    author: "Unknown",
-    content: "",
-    featured: "false",
-    views: 0,
-    editors_pick: null,
-    top_story: null,
+    category: {
+      category_name: "Latest Today",
+      category_id: 0,
+      created_at: "",
+      updated_at: "",
+      total_stories: null,
+    },
+    banner_image: "/images/Rectangle 39 (1).svg",
+  };
+  const secondStory: Story = stories[1]?.story || {
+    id: 0,
+    title: "Loading...",
     category: {
       category_name: "Loading",
       category_id: 0,
@@ -35,22 +34,18 @@ export default function TopStoriesSection() {
       total_stories: null,
     },
     banner_image: "/images/Rectangle 39.svg",
-    created_at: "",
-    updated_at: "",
-  };
-
-  const mainStory: Story = stories[0]?.story || {
-    ...fallbackStory,
-    category: { ...fallbackStory.category, category_name: "Latest Today" },
-    banner_image: "/images/Rectangle 39 (1).svg",
-  };
-  const secondStory: Story = stories[1]?.story || {
-    ...fallbackStory,
-    category: { ...fallbackStory.category, category_name: "News Today" },
   };
   const thirdStory: Story = stories[2]?.story || {
-    ...fallbackStory,
-    category: { ...fallbackStory.category, category_name: "News Today" },
+    id: 0,
+    title: "Loading...",
+    category: {
+      category_name: "Loading",
+      category_id: 0,
+      created_at: "",
+      updated_at: "",
+      total_stories: null,
+    },
+    banner_image: "/images/Rectangle 39.svg",
   };
 
   return (
@@ -59,29 +54,21 @@ export default function TopStoriesSection() {
         TOP STORIES
       </h2>
 
-      {/* Loading State */}
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
           <div className="md:col-span-2">
-            <div className="relative rounded overflow-hidden h-[400px] md:h-[480px]">
-              <div className="w-full h-full bg-gray-300" />
-              <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent text-white p-4">
-                <div className="h-4 bg-gray-400 rounded w-1/4 mb-1" />
-                <div className="h-6 bg-gray-400 rounded w-3/4" />
-              </div>
-            </div>
+            <div className="relative rounded overflow-hidden h-[400px] md:h-[480px] bg-gray-300" />
           </div>
-          <div className="md:col-span-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px] md:h-[480px]">
-              <div className="rounded overflow-hidden bg-gray-300 h-[200px] md:h-1/2" />
-              <div className="rounded overflow-hidden bg-gray-300 h-[200px] md:h-1/2 md:hidden" />
-              <div className="rounded overflow-hidden bg-gray-300 h-[200px] md:h-1/2" />
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-4 h-[50%]">
+              <div className="rounded overflow-hidden bg-gray-300 h-[120px]" />
+              <div className="rounded overflow-hidden bg-gray-300 h-[120px]" />
             </div>
+            <div className="rounded overflow-hidden bg-gray-300 h-[120px]" />
           </div>
         </div>
       )}
 
-      {/* Error State */}
       {isError && (
         <div className="text-center text-red-600">
           Error loading top stories:{" "}
@@ -89,9 +76,8 @@ export default function TopStoriesSection() {
         </div>
       )}
 
-      {/* Content */}
       {!isLoading && !isError && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
           {/* Main Story */}
           <div className="md:col-span-2">
             <Link href={`/stories/${mainStory.id}`} className="block">
@@ -105,7 +91,7 @@ export default function TopStoriesSection() {
                 />
                 <div className="absolute bottom-0 bg-gradient-to-t from-black via-transparent to-transparent text-white p-4">
                   <p className="text-sm font-bold text-[#F85FD0] uppercase mb-1">
-                    LATEST TODAY
+                    {mainStory.category.category_name}
                   </p>
                   <h3 className="text-lg md:text-xl font-semibold leading-tight line-clamp-2">
                     {mainStory.title}
@@ -115,14 +101,12 @@ export default function TopStoriesSection() {
             </Link>
           </div>
 
-          {/* Secondary Stories */}
-          <div className="md:col-span-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px] md:h-[480px]">
-              {/* Second Story */}
-              <Link
-                href={`/stories/${secondStory.id}`}
-                className="block h-[200px] md:h-1/2"
-              >
+          {/* Side Stories */}
+          <div className="flex flex-col gap-4 md:h-[480px]">
+            {/* Twins */}
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:h-1/2">
+              {/* Twin 1 */}
+              <Link href={`/stories/${secondStory.id}`} className="block h-full">
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
                     src={secondStory.banner_image || "/images/Rectangle 39.svg"}
@@ -133,7 +117,7 @@ export default function TopStoriesSection() {
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
                     <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
-                      NEWS TODAY
+                      {secondStory.category.category_name}
                     </p>
                     <p className="text-xs font-medium line-clamp-3">
                       {secondStory.title}
@@ -141,30 +125,49 @@ export default function TopStoriesSection() {
                   </div>
                 </div>
               </Link>
-              {/* Third Story */}
-              <Link
-                href={`/stories/${thirdStory.id}`}
-                className="block h-[200px] md:h-1/2"
-              >
+
+              {/* Twin 2 (reused same story for demo, you can change) */}
+              <Link href={`/stories/${secondStory.id}`} className="block h-full">
                 <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
                   <Image
-                    src={thirdStory.banner_image || "/images/Rectangle 39.svg"}
-                    alt={thirdStory.title}
+                    src={secondStory.banner_image || "/images/Rectangle 39.svg"}
+                    alt={secondStory.title}
                     width={400}
                     height={250}
                     className="w-full h-24 object-cover md:h-40"
                   />
                   <div className="p-2 flex-1 flex flex-col justify-between">
                     <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
-                      NEWS TODAY
+                      {secondStory.category.category_name}
                     </p>
                     <p className="text-xs font-medium line-clamp-3">
-                      {thirdStory.title}
+                      {secondStory.title}
                     </p>
                   </div>
                 </div>
               </Link>
             </div>
+
+            {/* Bottom Story */}
+            <Link href={`/stories/${thirdStory.id}`} className="block md:h-1/2">
+              <div className="rounded overflow-hidden shadow-md h-full flex flex-col">
+                <Image
+                  src={thirdStory.banner_image || "/images/Rectangle 39.svg"}
+                  alt={thirdStory.title}
+                  width={400}
+                  height={250}
+                  className="w-full h-24 object-cover md:h-40"
+                />
+                <div className="p-2 flex-1 flex flex-col justify-between">
+                  <p className="text-xs font-bold text-[#F85FD0] uppercase mb-1">
+                    {thirdStory.category.category_name}
+                  </p>
+                  <p className="text-xs font-medium line-clamp-3">
+                    {thirdStory.title}
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       )}
